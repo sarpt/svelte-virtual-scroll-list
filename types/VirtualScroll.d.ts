@@ -109,7 +109,7 @@ export interface VirtualScrollProps<T> {
 }
 
 export default class VirtualScroll<T> extends SvelteComponentTyped<
-  VirtualScrollProps,
+  VirtualScrollProps<T>,
   { scroll: CustomEvent<any>; top: CustomEvent<any>; bottom: CustomEvent<any> },
   { default: { data: T }; footer: {}; header: {} }
 > {}
