@@ -1,5 +1,4 @@
 import svelte from "rollup-plugin-svelte"
-import sveld from "sveld"
 import pkg from "../package.json"
 
 export default {
@@ -17,6 +16,5 @@ export default {
                 dev: false,
             },
         }),
-        sveld(),
     ],
 }
