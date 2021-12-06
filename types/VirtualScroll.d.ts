@@ -62,6 +62,12 @@ export interface VirtualScrollProps<T> {
   bottomThreshold?: number;
 
   /**
+   * Class to assign to virtual scroll root node.
+   * @type {string}
+   */
+  rootNodeClass?: string;
+
+  /**
    * @default () => { return virtual.sizes.get(id) }
    */
   getSize?: () => any;
@@ -111,5 +117,5 @@ export interface VirtualScrollProps<T> {
 export default class VirtualScroll<T> extends SvelteComponentTyped<
   VirtualScrollProps<T>,
   { scroll: CustomEvent<any>; top: CustomEvent<any>; bottom: CustomEvent<any> },
-  { default: { data: T }; footer: {}; header: {} }
+  { default: { data: T, idx: number }; footer: {}; header: {} }
 > {}

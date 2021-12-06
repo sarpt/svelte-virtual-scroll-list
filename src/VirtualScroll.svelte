@@ -51,6 +51,11 @@
      * @type {number}
      */
     export let bottomThreshold = 0
+    /**
+     * Class to assign to virtual scroll root node.
+     * @type {string}
+     */
+    export let rootNodeClass = ''
 
     let displayItems = []
     let paddingStyle
@@ -261,20 +266,20 @@
     }
 </script>
 
-<div bind:this={root} on:scroll={onScroll} style="overflow-y: auto; height: inherit">
+<div bind:this={root} on:scroll={onScroll} class={rootNodeClass} style="overflow-y: auto; height: inherit">
     {#if $$slots.header}
         <Item on:resize={onItemResized} type="slot" uniqueKey="header">
             <slot name="header"/>
         </Item>
     {/if}
     <div style="padding: {paddingStyle}">
-        {#each displayItems as data (data[key])}
+        {#each displayItems as data, idx (data[key])}
             <Item
                     on:resize={onItemResized}
                     uniqueKey={data[key]}
                     horizontal={isHorizontal}
                     type="item">
-                <slot {data}/>
+                <slot {data} {idx}/>
             </Item>
         {/each}
     </div>
